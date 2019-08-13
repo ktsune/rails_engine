@@ -27,4 +27,5 @@ task :import_merchants => [:environment] do
     #   :updated_at => row[3]
     # )
   end
+  Merchant.import(merchants)
 end
