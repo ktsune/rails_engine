@@ -11,13 +11,20 @@ desc "Import merchants from csv file"
 task :import_merchants => [:environment] do
 
   file = "./csv/merchants.csv"
+  merchants = []
 
   CSV.foreach(file, :headers => true) do |row|
-    Merchant.create!(
-      :id => row[0],
-      :name => row[1],
-      :created_at => row[2],
-      :updated_at => row[3]
+    merchants << Merchant.new(
+      id: row[0],
+      name: row[1],
+      created_at: row[2],
+      updated_at: row[3]
     )
+    # Merchant.create!(
+    #   :id => row[0],
+    #   :name => row[1],
+    #   :created_at => row[2],
+    #   :updated_at => row[3]
+    # )
   end
 end
