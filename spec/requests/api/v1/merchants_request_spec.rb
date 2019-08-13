@@ -10,7 +10,7 @@ describe 'Merchants API' do
 
     merchants = JSON.parse(response.body)
 
-    expect(merchants.count).to eq(5)
+    expect(merchants["data"].count).to eq(5)
   end
 
   it "can get one merchant by its id" do
@@ -21,6 +21,6 @@ describe 'Merchants API' do
    merchant = JSON.parse(response.body)
 
    expect(response).to be_successful
-   expect(merchant["id"]).to eq(id)
+   expect(merchant["data"]["id"].to_i).to eq(id)
  end
 end
