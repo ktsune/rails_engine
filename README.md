@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Setup
 
-Things you may want to cover:
+Run this line to setup your database:
 
-* Ruby version
+$ rake db:{drop, create, migrate, seed}
 
-* System dependencies
+And then run this rake command:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+$ rake import
 
 * ...
