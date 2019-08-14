@@ -32,7 +32,6 @@ describe 'Merchants API' do
     merchant = JSON.parse(response.body)
 
     expect(response).to be_successful
-    # binding.pry
     expect(name).to eq(merchant["data"]["attributes"]["name"])
   end
 
