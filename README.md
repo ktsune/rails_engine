@@ -6,7 +6,7 @@ Run `bundle`
 
 Run this line to setup your database:
 
-`rake db:{drop, create, migrate, seed}`
+`rake db:{drop, create, migrate}`
 
 And then run this rake command:
 
