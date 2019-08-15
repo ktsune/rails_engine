@@ -16,21 +16,26 @@ RSpec.describe Merchant, type: :model do
     stella = Merchant.create!(name: "stella")
     avi = Merchant.create!(name: "avi")
 
-    ketchup = Item.create(name: "ketchup", description: "red", unit_price: 10, merchant_id: tay.id)
-    mustard = Item.create(name: "mustard", description: "yellow", unit_price: 20, merchant_id: stella.id)
-    ranch = Item.create(name: "ranch", description: "white", unit_price: 30, merchant_id: avi.id)
+    customer_1 = Customer.create!(first_name: 'alex', last_name: 'bison')
+    customer_2 = Customer.create!(first_name: 'byron', last_name: 'lee')
+    customer_3 = Customer.create!(first_name: 'jake', last_name: 'miller')
 
-    invoice_1 = Invoice.create(status: "shipped")
+    ketchup = Item.create!(name: "ketchup", description: "red", unit_price: 10, merchant_id: tay.id)
+    mustard = Item.create!(name: "mustard", description: "yellow", unit_price: 20, merchant_id: stella.id)
+    ranch = Item.create!(name: "ranch", description: "white", unit_price: 30, merchant_id: avi.id)
 
-    invoice_item_1 = ketchup.invoice_items.create(invoice_id: invoice_1, quantity: 1, unit_price: 10)
-    invoice_item_2 = mustard.invoice_items.create(quantity: 1, unit_price: 20)
-    invoice_item_3 = ranch.invoice_items.create(quantity: 1, unit_price: 30)
+    invoice_1 = Invoice.create!(merchant_id: tay.id, customer_id: customer_1.id )
+    invoice_2 = Invoice.create!(merchant_id: stella.id, customer_id: customer_2.id )
+    invoice_3 = Invoice.create!(merchant_id: avi.id, customer_id: customer_3.id )
 
-    get "/api/v1/merchants/most_revenue?quantity=3"
+    transaction_1 = Transaction.create!(credit_card_number: "1234 1234 1234 1234", result: "success", invoice_id: invoice_1.id)
+    transaction_2 = Transaction.create!(credit_card_number: "1234 1234 1234 1234", result: "success", invoice_id: invoice_2.id)
+    transaction_3 = Transaction.create!(credit_card_number: "1234 1234 1234 1234", result: "success", invoice_id: invoice_3.id)
 
-    merchant = JSON.parse(response.body)
+    invoice_item_1 = ketchup.invoice_items.create!(quantity: 1, unit_price: 10, invoice_id: invoice_1.id, item_id: ketchup.id)
+    invoice_item_2 = mustard.invoice_items.create!(quantity: 1, unit_price: 20, invoice_id: invoice_2.id, item_id: mustard.id)
+    invoice_item_3 = ranch.invoice_items.create!(quantity: 1, unit_price: 30, invoice_id: invoice_3.id, item_id: ranch.id)
 
-    expect(response).to be_successful
-    expect(Merchant.most_revenue).to eq(avi.name)
+    expect(Merchant.most_revenue(3)).to eq([avi, stella, tay])
   end
 end
