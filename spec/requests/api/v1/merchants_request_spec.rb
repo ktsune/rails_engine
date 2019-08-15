@@ -22,7 +22,7 @@ describe 'Merchants API' do
 
    expect(response).to be_successful
    expect(merchant["data"]["id"].to_i).to eq(id)
-  end
+  end 
 
   it 'can find a single object with any attribute' do
     name = create(:merchant).name
@@ -67,6 +67,7 @@ describe 'Merchants API' do
     expect(response).to be_successful
     expect(aurie["created_at"]).to eq(merchant["data"]["attributes"]["created_at"])
   end
+end
 
   # it 'can find the top x merchants by revenue' do
   #   tay = Merchant.create!(name: "tay")
@@ -87,4 +88,3 @@ describe 'Merchants API' do
   #   expect(response).to be_successful
   #   expect(Merchant.most_revenue).to eq(avi.name)
   # end
-end
