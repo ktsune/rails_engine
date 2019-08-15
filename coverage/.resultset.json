@@ -97,6 +97,32 @@
         null,
         1,
         1,
+        null
+      ],
+      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/items_controller.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/sarahlee/turing/3module/projects/rails_engine/app/serializers/item_serializer.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        4,
         null,
         null
       ],
@@ -109,26 +135,8 @@
         null,
         1,
         1,
-        null,
-        null,
-        null
-      ],
-      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/merchants/search_controller.rb": [
         1,
         null,
-        1,
-        0,
-        null,
-        null,
-        null,
-        1,
-        4,
-        null,
-        null,
-        null,
-        1,
-        1,
-        4,
         null,
         null
       ],
@@ -138,36 +146,28 @@
         0,
         0
       ],
-      "/Users/sarahlee/turing/3module/projects/rails_engine/app/serializers/item_serializer.rb": [
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0
-      ],
       "/Users/sarahlee/turing/3module/projects/rails_engine/app/jobs/application_job.rb": [
         0,
         0
       ],
-      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/items_controller.rb": [
+      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/merchants/search_controller.rb": [
+        0,
+        null,
+        0,
+        0,
+        null,
         0,
         null,
         0,
         0,
         0,
         null,
+        null,
         0,
         0,
         0,
         0,
-        null
+        0
       ],
       "/Users/sarahlee/turing/3module/projects/rails_engine/app/channels/application_cable/connection.rb": [
         0,
@@ -182,6 +182,6 @@
         0
       ]
     },
-    "timestamp": 1565895858
+    "timestamp": 1565901673
   }
 }
