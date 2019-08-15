@@ -1,7 +1,8 @@
 class Api::V1::Merchants::SearchController < ApplicationController
 
   def index
-    render json: MerchantSerializer.new(Merchant.find_all(search_params(params)))
+    render json: MerchantSerializer.new(Merchant.where(search_params(params)))
+
   end
 
   def show
