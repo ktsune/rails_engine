@@ -4,7 +4,7 @@ class Api::V1::Merchants::RevenueController < ApplicationController
 
   def show
     # binding.pry
-    render json: MerchantSerializer.new(Merchant.most_revenue(num))
+    # render json: MerchantSerializer.new(Merchant.most_revenue(num))
   end
 
 private
