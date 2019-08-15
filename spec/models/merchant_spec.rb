@@ -39,9 +39,27 @@ RSpec.describe Merchant, type: :model do
     expect(Merchant.most_revenue(3)).to eq([avi, stella, tay])
   end
 
-  it 'can find most revenue by date' do
-    tay = Merchant.create!(name: "tay")
-    stella = Merchant.create!(name: "stella")
-    avi = Merchant.create!(name: "avi")
-  end
+  # it 'can find most revenue by date' do
+  #   tay = Merchant.create!(name: "tay")
+  #   stella = Merchant.create!(name: "stella")
+  #   avi = Merchant.create!(name: "avi")
+  #
+  #   ketchup = Item.create!(name: "ketchup", description: "red", unit_price: 10, merchant_id: tay.id)
+  #   mustard = Item.create!(name: "mustard", description: "yellow", unit_price: 20, merchant_id: stella.id)
+  #   ranch = Item.create!(name: "ranch", description: "white", unit_price: 30, merchant_id: avi.id)
+  #
+  #   customer_1 = Customer.create!(first_name: 'alex', last_name: 'bison')
+  #   customer_2 = Customer.create!(first_name: 'byron', last_name: 'lee')
+  #   customer_3 = Customer.create!(first_name: 'jake', last_name: 'miller')
+  #
+  #   invoice_1 = Invoice.create!(merchant_id: tay.id, customer_id: customer_1.id, created_at: "2012-05-04")
+  #   invoice_2 = Invoice.create!(merchant_id: stella.id, customer_id: customer_2.id, created_at: "2012-05-04")
+  #   invoice_3 = Invoice.create!(merchant_id: avi.id, customer_id: customer_3.id, created_at: "2012-05-04")
+  #
+  #   invoice_item_1 = ketchup.invoice_items.create!(quantity: 1, unit_price: 10, invoice_id: invoice_1.id, item_id: ketchup.id)
+  #   invoice_item_2 = mustard.invoice_items.create!(quantity: 1, unit_price: 20, invoice_id: invoice_2.id, item_id: mustard.id)
+  #   invoice_item_3 = ranch.invoice_items.create!(quantity: 1, unit_price: 30, invoice_id: invoice_3.id, item_id: ranch.id)
+  #
+  #   expect(Merchant.most_revenue_for_date("2012-05-04" "%.2f" % (total.to_f / 100))).to eq("10.00")
+  # end
 end

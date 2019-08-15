@@ -12,11 +12,6 @@
         1,
         2,
         null,
-        null,
-        1,
-        1,
-        0,
-        null,
         null
       ],
       "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/application_controller.rb": [
@@ -206,6 +201,6 @@
         0
       ]
     },
-    "timestamp": 1565907579
+    "timestamp": 1565911381
   }
 }
