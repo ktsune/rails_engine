@@ -3,6 +3,12 @@ class Api::V1::Merchants::RevenueController < ApplicationController
   end
 
   def show
-    render json: MerchantSerializer.new(Merchant.find_all(search_params(params)))
+    # binding.pry
+    render json: MerchantSerializer.new(Merchant.most_revenue(num))
+  end
+
+private
+  def merchant_params(params)
+    params.permit(:name, :id, :updated_at, :created_at)
   end
 end
