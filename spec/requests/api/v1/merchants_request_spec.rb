@@ -67,4 +67,41 @@ describe 'Merchants API' do
     expect(response).to be_successful
     expect(aurie["created_at"]).to eq(merchant["data"]["attributes"]["created_at"])
   end
-end 
+
+  it 'can find most revenue' do
+    tay = Merchant.create!(name: "tay")
+    stella = Merchant.create!(name: "stella")
+    avi = Merchant.create!(name: "avi")
+
+    get "/api/v1/merchants/most_revenue?quantity=3"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(Merchant.count).to eq(3)
+  end
+
+  it 'can find most revenue by date' do
+    tay = Merchant.create!(name: "tay")
+    stella = Merchant.create!(name: "stella")
+    avi = Merchant.create!(name: "avi")
+
+    get "/api/v1/merchants/revenue?date=2012-05-30"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+  end
+
+  # it 'can find most number of items sold' do
+  #   tay = Merchant.create!(name: "tay")
+  #   stella = Merchant.create!(name: "stella")
+  #   avi = Merchant.create!(name: "avi")
+  #
+  #   get "/api/v1/merchants/revenue?date=2012-05-30"
+  #
+  #   merchant = JSON.parse(response.body)
+  #
+  #   expect(response).to be_successful
+  # end
+end

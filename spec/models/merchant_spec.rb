@@ -38,4 +38,10 @@ RSpec.describe Merchant, type: :model do
 
     expect(Merchant.most_revenue(3)).to eq([avi, stella, tay])
   end
+
+  it 'can find most revenue by date' do
+    tay = Merchant.create!(name: "tay")
+    stella = Merchant.create!(name: "stella")
+    avi = Merchant.create!(name: "avi")
+  end
 end
