@@ -67,7 +67,7 @@ describe 'Merchants API' do
     expect(response).to be_successful
     expect(aurie["created_at"]).to eq(merchant["data"]["attributes"]["created_at"])
   end
-end
+end 
 
   # it 'can find the top x merchants by revenue' do
   #   tay = Merchant.create!(name: "tay")

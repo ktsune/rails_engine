@@ -46,9 +46,10 @@ task :import => [:environment] do
   transactions = []
 
   CSV.foreach(file, :headers => true) do |row|
-    transactions << row.to_h
+    Transaction.create!(row.to_h)
+    #transactions << row.to_h
   end
-  Transaction.import(transactions)
+  #Transaction.import(transactions)
 
   file = "./csv/invoice_items.csv"
   invoice_items = []
