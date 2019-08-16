@@ -22,7 +22,7 @@ describe 'Merchants API' do
 
    expect(response).to be_successful
    expect(merchant["data"]["id"].to_i).to eq(id)
-  end 
+  end
 
   it 'can find a single object with any attribute' do
     name = create(:merchant).name
@@ -67,24 +67,41 @@ describe 'Merchants API' do
     expect(response).to be_successful
     expect(aurie["created_at"]).to eq(merchant["data"]["attributes"]["created_at"])
   end
-end 
 
-  # it 'can find the top x merchants by revenue' do
-  #   tay = Merchant.create!(name: "tay")
-  #   stella = Merchant.create!(name: "stella")
-  #   avi = Merchant.create!(name: "avi")
-  #
-  #   ketchup = Item.create(name: "ketchup", description: "red", unit_price: 10, merchant_id: tay.id)
-  #   mustard = Item.create(name: "mustard", description: "yellow", unit_price: 20, merchant_id: stella.id)
-  #   ranch = Item.create(name: "ranch", description: "white", unit_price: 30, merchant_id: avi.id)
-  #
-  #   # invoice_item_1 = ketchup.invoice_items.create(quantity: 1, unit_price: 10)
-  #   # invoice_item_2 = mustard.invoice_items.create(quantity: 1, unit_price: 20)
-  #   # invoice_item_3 = ranch.invoice_items.create(quantity: 1, unit_price: 30)
-  #
-  #   get "/api/v1/merchants/most_revenue?quantity=3"
-  #
-  #   merchant = JSON.parse(response.body)
-  #   expect(response).to be_successful
-  #   expect(Merchant.most_revenue).to eq(avi.name)
-  # end
+  it 'can find most revenue' do
+    tay = Merchant.create!(name: "tay")
+    stella = Merchant.create!(name: "stella")
+    avi = Merchant.create!(name: "avi")
+
+    get "/api/v1/merchants/most_revenue?quantity=3"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(Merchant.count).to eq(3)
+  end
+
+  it 'can find most revenue by date' do
+    tay = Merchant.create!(name: "tay")
+    stella = Merchant.create!(name: "stella")
+    avi = Merchant.create!(name: "avi")
+
+    get "/api/v1/merchants/most_revenue?date=2012-03-16"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+  end
+
+  it 'can find most number of items sold' do
+    tay = Merchant.create!(name: "tay")
+    stella = Merchant.create!(name: "stella")
+    avi = Merchant.create!(name: "avi")
+
+    get "/api/v1/merchants/revenue?date=2012-03-16"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+  end
+end
