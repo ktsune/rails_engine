@@ -4,5 +4,8 @@ class Api::V1::Merchants::ItemsController < ApplicationController
   end
 
   def show
+    binding.pry
+    merchant = Merchant.find(params[:id])
+    render json: MerchantSerializer.new(Merchant.revenue)
   end
 end

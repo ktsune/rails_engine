@@ -32,4 +32,8 @@ class Merchant < ApplicationRecord
     .limit(quantity)
     .where("transactions.result = ?", 'success')
   end
+
+  def revenue
+    binding.pry
+  end
 end
