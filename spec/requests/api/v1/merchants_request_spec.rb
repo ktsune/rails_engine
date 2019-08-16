@@ -89,7 +89,7 @@ describe 'Merchants API' do
     get "/api/v1/merchants/most_revenue?date=2012-03-16"
 
     merchant = JSON.parse(response.body)
-    
+
     expect(response).to be_successful
   end
 
