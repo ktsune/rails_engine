@@ -46,6 +46,14 @@
         1,
         null,
         null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/sarahlee/turing/3module/projects/rails_engine/app/models/merchant.rb": [
@@ -157,6 +165,7 @@
       ],
       "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/items/all_items_controller.rb": [
         1,
+        null,
         1,
         1,
         null,
@@ -324,8 +333,7 @@
         0,
         null,
         0,
-        0,
-        0,
+        null,
         0,
         0,
         0
@@ -405,6 +413,6 @@
         0
       ]
     },
-    "timestamp": 1565988912
+    "timestamp": 1565990969
   }
 }
