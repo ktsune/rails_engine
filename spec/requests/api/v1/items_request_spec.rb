@@ -9,7 +9,6 @@ describe 'Items API' do
     expect(response).to be_success
 
     items = JSON.parse(response.body)
-
     expect(items["data"].count).to eq(5)
   end
 
@@ -23,7 +22,19 @@ describe 'Items API' do
    expect(response).to be_successful
    expect(item["data"]["id"].to_i).to eq(id)
   end
-  # 
+
+  it 'sends a list of Items' do
+    create_list(:item, 5)
+
+    get '/api/v1/items/most_revenue?quantity=3'
+
+    expect(response).to be_success
+
+    items = JSON.parse(response.body)
+    # expect(items["data"].count).to eq(5)
+  end
+
+  #
   # it 'can find a single object with any attribute' do
   #   name = create(:item).name
   #

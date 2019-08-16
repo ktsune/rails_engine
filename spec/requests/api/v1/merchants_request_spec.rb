@@ -86,10 +86,10 @@ describe 'Merchants API' do
     stella = Merchant.create!(name: "stella")
     avi = Merchant.create!(name: "avi")
 
-    get "/api/v1/merchants/revenue?date=2012-05-30"
+    get "/api/v1/merchants/most_revenue?date=2012-03-16"
 
     merchant = JSON.parse(response.body)
-
+    
     expect(response).to be_successful
   end
 
@@ -98,7 +98,7 @@ describe 'Merchants API' do
     stella = Merchant.create!(name: "stella")
     avi = Merchant.create!(name: "avi")
 
-    get "/api/v1/merchants/revenue?date=2012-05-30"
+    get "/api/v1/merchants/revenue?date=2012-03-16"
 
     merchant = JSON.parse(response.body)
 

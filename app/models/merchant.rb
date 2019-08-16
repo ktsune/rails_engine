@@ -36,4 +36,9 @@ class Merchant < ApplicationRecord
   def revenue
     binding.pry
   end
+
+  Merchant.joins(:invoices).joins("Join invoice_items ON invoices.id = invoice_items.invoice_id").joins("Join transactions ON invoices.id = transactions.invoice_id").select("merchants.*, SUM(invoice_items.unit_price * invoice_items.quantity) AS revenue").where("transactions.result = ?", "success").group(:id).order("revenue desc").limit(5)
+
+  # => items most revenue
+  Item.joins(:invoices).joins("Join invoice_items ON invoices.id = invoice_items.invoice_id").joins("Join transactions ON invoices.id = transactions.invoice_id").select("Items.*, SUM(invoice_items.unit_price * invoice_items.quantity) AS revenue").where("transactions.result = ?", "success").group(:id).order("revenue desc").limit(5)
 end
