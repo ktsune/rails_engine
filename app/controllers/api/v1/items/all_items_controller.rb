@@ -5,5 +5,6 @@ class Api::V1::Items::AllItemsController < ApplicationController
   end
 
   def show
+    render json: ItemSerializer.new(Item.most_items(params[:quantity]))
   end
 end

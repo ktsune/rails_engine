@@ -23,7 +23,7 @@ describe 'Items API' do
    expect(item["data"]["id"].to_i).to eq(id)
   end
 
-  it 'sends a list of Items' do
+  it 'gets items with highest revenue based on quantity input' do
     create_list(:item, 5)
 
     get '/api/v1/items/most_revenue?quantity=3'
@@ -31,7 +31,27 @@ describe 'Items API' do
     expect(response).to be_success
 
     items = JSON.parse(response.body)
-    # expect(items["data"].count).to eq(5)
+  end
+
+  it 'finds highest occurance of items based on quantity param' do
+    create_list(:item, 5)
+
+    get '/api/v1/items/most_items?quantity=3'
+
+    expect(response).to be_success
+
+    items = JSON.parse(response.body)
+  end
+
+  it 'returns date with most sales for given item using invoice date' do
+    create_list(:item, 5)
+    id = create(:item).id
+
+    get "/api/v1/items/#{id}/best_day"
+
+    expect(response).to be_success
+
+    items = JSON.parse(response.body)
   end
 
   #

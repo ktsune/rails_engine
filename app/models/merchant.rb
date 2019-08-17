@@ -7,8 +7,8 @@ class Merchant < ApplicationRecord
 
   def self.most_revenue(quantity)
     Merchant.joins(:invoices)
-    .joins("Join invoice_items ON invoices.id = invoice_items.invoice_id")
-    .joins("Join transactions ON invoices.id = transactions.invoice_id")
+    .joins("JOIN invoice_items ON invoices.id = invoice_items.invoice_id")
+    .joins("JOIN transactions ON invoices.id = transactions.invoice_id")
     .select("merchants.*, SUM(invoice_items.unit_price * invoice_items.quantity) AS revenue")
     .where("transactions.result = ?", "success")
     .group(:id).order("revenue desc")
@@ -24,8 +24,8 @@ class Merchant < ApplicationRecord
 
   def self.most_items_sold(quantity)
     Merchant.joins(:invoices)
-    .joins("Join invoice_items ON invoices.id = invoice_items.invoice_id")
-    .joins("Join transactions ON invoices.id = transactions.invoice_id")
+    .joins("JOIN invoice_items ON invoices.id = invoice_items.invoice_id")
+    .joins("JOIN transactions ON invoices.id = transactions.invoice_id")
     .select('merchants.*, SUM(invoice_items.quantity) AS count')
     .group('merchants.id')
     .order('count DESC')
@@ -33,12 +33,13 @@ class Merchant < ApplicationRecord
     .where("transactions.result = ?", 'success')
   end
 
-  def revenue
-    binding.pry
+  def revenue(id)
+    Merchant.joins(:invoices)
+      .joins("JOIN invoice_items ON invoices.id = invoice_items.invoice_id")
+      .joins("JOIN transactions ON invoices.id = transactions.invoice_id")
+      .where("transactions.result = ?", "success")
+      .where("merchants.id = ?", id)
+      .group(:id)
+      .sum("invoice_items.quantity * invoice_items.unit_price")[id.to_i]
   end
-
-  Merchant.joins(:invoices).joins("Join invoice_items ON invoices.id = invoice_items.invoice_id").joins("Join transactions ON invoices.id = transactions.invoice_id").select("merchants.*, SUM(invoice_items.unit_price * invoice_items.quantity) AS revenue").where("transactions.result = ?", "success").group(:id).order("revenue desc").limit(5)
-
-  # => items most revenue
-  Item.joins(:invoices).joins("Join invoice_items ON invoices.id = invoice_items.invoice_id").joins("Join transactions ON invoices.id = transactions.invoice_id").select("Items.*, SUM(invoice_items.unit_price * invoice_items.quantity) AS revenue").where("transactions.result = ?", "success").group(:id).order("revenue desc").limit(5)
 end
