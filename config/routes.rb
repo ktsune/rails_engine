@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :merchants do
-        get '/:id/revenue', to: 'items#show'
+        get '/:id/revenue', to: 'single_merchant_revenue#show'
+        get '/:id/revenue', to: 'single_merchant_revenue#show'
         get '/find', to: 'search#show'
         get '/find_all', to: 'search#index'
         get '/most_revenue', to: 'revenue#show'
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
       namespace :customers do
         get '/find', to: 'search#show'
         get '/find_all', to: 'search#index'
+        get '/:id/favorite_merchant', to: 'favorite_merchant#show'
       end
 
       namespace :invoices do
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
         get '/most_items', to: 'all_items#show'
         get '/find', to: 'search#show'
         get '/find_all', to: 'search#index'
+        get '/:id/best_day', to: 'best_day#show'
       end
 
       resources :merchants, only: [:index, :show]

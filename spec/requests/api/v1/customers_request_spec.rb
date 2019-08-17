@@ -23,4 +23,15 @@ describe 'Customers API' do
    expect(response).to be_successful
    expect(customer["data"]["id"].to_i).to eq(id)
   end
+
+  it "merchant where the customer has conducted the most successful transactions" do
+   id = create(:customer).id
+
+   get "/api/v1/customers/#{id}/favorite_merchant"
+
+   customer = JSON.parse(response.body)
+
+   expect(response).to be_successful
+   # expect(customer["data"]["id"].to_i).to eq(id)
+  end
 end
