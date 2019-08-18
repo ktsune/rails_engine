@@ -1,33 +1,6 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/merchants/one_merchant_invoices_controller.rb": [
-        1,
-        1,
-        null,
-        null,
-        1,
-        0,
-        0,
-        null,
-        null
-      ],
-      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/application_controller.rb": [
-        1,
-        null
-      ],
-      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/transactions/invoice_controller.rb": [
-        1,
-        1,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        null,
-        null
-      ],
       "/Users/sarahlee/turing/3module/projects/rails_engine/app/models/customer.rb": [
         1,
         1,
@@ -42,7 +15,7 @@
         null,
         null,
         null,
-        2,
+        1,
         null,
         null
       ],
@@ -106,7 +79,16 @@
         null,
         null,
         1,
-        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
         null,
         null
       ],
@@ -196,6 +178,10 @@
         null,
         null
       ],
+      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/application_controller.rb": [
+        1,
+        null
+      ],
       "/Users/sarahlee/turing/3module/projects/rails_engine/app/serializers/invoice_item_serializer.rb": [
         1,
         1,
@@ -205,7 +191,7 @@
         1,
         null,
         1,
-        8,
+        6,
         null,
         null
       ],
@@ -217,12 +203,12 @@
         null,
         null,
         1,
-        5,
+        3,
         null,
         null,
         1,
         1,
-        5,
+        3,
         null,
         null
       ],
@@ -245,19 +231,6 @@
         1,
         null
       ],
-      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/customers/favorite_merchant_controller.rb": [
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
-        1,
-        0,
-        0,
-        null,
-        null
-      ],
       "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/customers/search_controller.rb": [
         1,
         null,
@@ -266,12 +239,12 @@
         null,
         null,
         1,
-        5,
+        3,
         null,
         null,
         1,
         1,
-        5,
+        3,
         null,
         null
       ],
@@ -306,12 +279,12 @@
         null,
         null,
         1,
-        4,
+        2,
         null,
         null,
         1,
         1,
-        4,
+        2,
         null,
         null
       ],
@@ -337,7 +310,7 @@
         1,
         null,
         1,
-        10,
+        8,
         null,
         null
       ],
@@ -372,12 +345,12 @@
         null,
         null,
         1,
-        4,
+        2,
         null,
         null,
         1,
         1,
-        4,
+        2,
         null,
         null
       ],
@@ -416,12 +389,12 @@
         null,
         null,
         1,
-        4,
+        2,
         null,
         null,
         1,
         1,
-        4,
+        2,
         null,
         null
       ],
@@ -502,12 +475,12 @@
         null,
         null,
         1,
-        5,
+        3,
         null,
         null,
         1,
         1,
-        5,
+        3,
         null,
         null
       ],
@@ -521,11 +494,47 @@
         0,
         0
       ],
+      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/customers/favorite_merchant_controller.rb": [
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/merchants/one_merchant_items_controller.rb": [
         0,
         0,
         0,
         null,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/merchants/one_merchant_invoices_controller.rb": [
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/sarahlee/turing/3module/projects/rails_engine/app/controllers/api/v1/transactions/invoice_controller.rb": [
+        0,
+        0,
+        0,
+        null,
+        0,
         0,
         0,
         0,
@@ -545,6 +554,6 @@
         0
       ]
     },
-    "timestamp": 1566159332
+    "timestamp": 1566166642
   }
 }
