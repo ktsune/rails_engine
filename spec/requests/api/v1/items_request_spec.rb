@@ -54,48 +54,49 @@ describe 'Items API' do
     items = JSON.parse(response.body)
   end
 
-  #
-  # it 'can find a single object with any attribute' do
-  #   name = create(:item).name
-  #
-  #   get "/api/v1/items/find?name=#{name}"
-  #
-  #   item = JSON.parse(response.body)
-  #
-  #   expect(response).to be_successful
-  #   expect(name).to eq(item["data"]["attributes"]["name"])
-  # end
-  #
-  # it 'can find a single object with any attribute' do
-  #   id = create(:item).id
-  #
-  #   get "/api/v1/items/find?id=#{id}"
-  #
-  #   item = JSON.parse(response.body)
-  #
-  #   expect(response).to be_successful
-  #   expect(item["data"]["attributes"]["id"]).to eq(id)
-  # end
-  #
-  # it 'can find a single object with any attribute' do
-  #   tay = Item.create!(name: "tay", updated_at: "2019-08-13T00:00:000Z")
-  #
-  #   get "/api/v1/items/find?updated_at=2019-08-13T00:00:000Z"
-  #
-  #   item = JSON.parse(response.body)
-  #
-  #   expect(response).to be_successful
-  #   expect(tay["updated_at"]).to eq(item["data"]["attributes"]["updated_at"])
-  # end
-  #
-  # it 'can find a single object with any attribute' do
-  #   aurie = Item.create!(name: "aurie", created_at: "2019-08-13 00:00:00.000000000")
-  #
-  #   get "/api/v1/items/find?created_at=2019-08-13 00:00:00.000000000"
-  #
-  #   item = JSON.parse(response.body)
-  #
-  #   expect(response).to be_successful
-  #   expect(aurie["created_at"]).to eq(item["data"]["attributes"]["created_at"])
-  # end
+  it 'can find a single object with any attribute' do
+    name = create(:item).name
+
+    get "/api/v1/items/find?name=#{name}"
+
+    item = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(name).to eq(item["data"]["attributes"]["name"])
+  end
+
+  it 'can find a single object with any attribute' do
+    id = create(:item).id
+
+    get "/api/v1/items/find?id=#{id}"
+
+    item = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(item["data"]["attributes"]["id"]).to eq(id)
+  end
+
+  it 'can find a single object with any attribute' do
+    alex = Merchant.create(name: "alex")
+    tay = Item.create!(name: "tay", updated_at: "2019-08-13T00:00:000Z", merchant_id: alex.id)
+
+    get "/api/v1/items/find?updated_at=2019-08-13T00:00:000Z"
+
+    item = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(tay["updated_at"]).to eq(item["data"]["attributes"]["updated_at"])
+  end
+
+  it 'can find a single object with any attribute' do
+    alex = Merchant.create(name: "alex")
+    aurie = Item.create!(name: "aurie", created_at: "2019-08-13 00:00:00.000000000", merchant_id: alex.id)
+
+    get "/api/v1/items/find?created_at=2019-08-13 00:00:00.000000000"
+
+    item = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(aurie["created_at"]).to eq(item["data"]["attributes"]["created_at"])
+  end
 end

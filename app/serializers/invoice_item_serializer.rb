@@ -4,4 +4,8 @@ class InvoiceItemSerializer
 
   belongs_to :item
   belongs_to :invoice
+
+  attribute :unit_price do |object|
+    "%.2f" % (object.unit_price.to_f / 100)
+  end
 end

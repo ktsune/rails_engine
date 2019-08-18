@@ -104,4 +104,35 @@ describe 'Merchants API' do
 
     expect(response).to be_successful
   end
+  it 'can find total revenue for specific merchant' do
+    tay = Merchant.create!(name: "tay")
+
+    get "/api/v1/merchants/#{tay.id}"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+  end
+
+  it 'can find total revenue for specific merchant by date' do
+    tay = Merchant.create!(name: "tay")
+    stella = Merchant.create!(name: "stella")
+    avi = Merchant.create!(name: "avi")
+
+    get "/api/v1/merchants/#{tay.id}/revenue?date=2012-03-16"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+  end
+
+  it "can find specific merchant's fav customer by most items sold" do
+    tay = Merchant.create!(name: "tay")
+
+    get "/api/v1/merchants/#{tay.id}/favorite_customer"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+  end
 end

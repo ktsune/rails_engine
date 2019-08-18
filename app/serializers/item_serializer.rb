@@ -9,8 +9,4 @@ class ItemSerializer
   attribute :unit_price do |object|
     "%.2f" % (object.unit_price.to_f / 100)
   end
-
-  def most_revenue(quantity)
-    binding.pry
-  end
 end

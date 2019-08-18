@@ -3,10 +3,6 @@ class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, through: :invoice_items
 
-  validates_presence_of :name,
-                        :description,
-                        :unit_price
-
   def self.most_revenue(quantity)
     Item.joins(:invoices)
     .joins("Join invoice_items ON invoices.id = invoice_items.invoice_id")
@@ -33,5 +29,18 @@ class Item < ApplicationRecord
     .where("transactions.result=?", "success")
     .where({invoices:{created_at: (date.to_date.all_day)}})
     .sum("invoice_items.quantity * invoice_items.unit_price")
+  end
+
+  def best_day
+    invoices.joins(:transactions)
+    .select("DATE(invoices.created_at) as created_at, COUNT(DATE(invoices.created_at)) as sales")
+    .where("transactions.result=?", "success")
+    .group(:id)
+    .group("created_at")
+    .order("sales desc")
+    .order("created_at desc")
+    .limit(1)
+    .first 
+    .created_at
   end
 end

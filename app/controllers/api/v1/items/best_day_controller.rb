@@ -3,6 +3,7 @@ class Api::V1::Items::BestDayController < ApplicationController
   end
 
   def show
-    # render :json ItemSerializer.new(Item.best_day(params[:date]))
+    item = Item.find(params[:id])
+    render json: {"data" => {"attributes" => {"best_day" => item.best_day.to_date}}}
   end
 end
