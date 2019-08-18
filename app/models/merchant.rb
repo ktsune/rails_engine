@@ -54,8 +54,7 @@ class Merchant < ApplicationRecord
   end
 
   def total_revenue_for_date(date)
-    binding.pry
-    Invoice.joins(:invoice_items, :transactions)
+    invoices.joins(:invoice_items, :transactions)
       .where("transactions.result=?", "success")
       .where({invoices:{created_at: (date.to_date.all_day)}})
       .sum("invoice_items.quantity * invoice_items.unit_price")
