@@ -1,11 +1,11 @@
 class Api::V1::Transactions::SearchController < ApplicationController
 
   def index
-    render json: TransactionSerializer.new(Transaction.where(search_params(params)))
+    render json: TransactionSerializer.new(Transaction.order_with_id.where(search_params(params)))
   end
 
   def show
-    render json: TransactionSerializer.new(Transaction.find_by(search_params(params)))
+    render json: TransactionSerializer.new(Transaction.order_with_id.find_by(search_params(params)))
   end
 
 private

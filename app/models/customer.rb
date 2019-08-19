@@ -13,4 +13,9 @@ class Customer < ApplicationRecord
       .order('count DESC')
       .first
   end
+
+  def customer_transactions
+    invoices.joins(:transactions)
+    .select('transactions.*')
+  end
 end

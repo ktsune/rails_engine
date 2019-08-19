@@ -40,7 +40,11 @@ class Item < ApplicationRecord
     .order("sales desc")
     .order("created_at desc")
     .limit(1)
-    .first 
+    .first
     .created_at
+  end
+
+  def self.order_with_id
+    self.order("id asc")
   end
 end
