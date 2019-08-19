@@ -1,4 +1,4 @@
-class Api::V1::Items::RelationsController < ApplicationController
+class Api::V1::Items::RelationController < ApplicationController
   def index
     item = Item.find(params[:id])
     merchant = Merchant.find(item.merchant_id)
