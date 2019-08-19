@@ -9,4 +9,9 @@ class Invoice < ApplicationRecord
   def self.order_with_id
     self.order("id asc")
   end
+
+  def invoices_items
+    self.joins(:items)
+    .select('items.*')
+  end
 end
