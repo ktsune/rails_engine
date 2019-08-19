@@ -46,27 +46,27 @@ describe 'Merchants API' do
     expect(merchant["data"]["attributes"]["id"]).to eq(id)
   end
 
-  it 'can find a single object with any attribute' do
-    tay = Merchant.create!(name: "tay", updated_at: "2019-08-13T00:00:000Z")
-
-    get "/api/v1/merchants/find?updated_at=2019-08-13T00:00:000Z"
-
-    merchant = JSON.parse(response.body)
-
-    expect(response).to be_successful
-    expect(tay["updated_at"]).to eq(merchant["data"]["attributes"]["updated_at"])
-  end
-
-  it 'can find a single object with any attribute' do
-    aurie = Merchant.create!(name: "aurie", created_at: "2019-08-13 00:00:00.000000000")
-
-    get "/api/v1/merchants/find?created_at=2019-08-13 00:00:00.000000000"
-
-    merchant = JSON.parse(response.body)
-
-    expect(response).to be_successful
-    expect(aurie["created_at"]).to eq(merchant["data"]["attributes"]["created_at"])
-  end
+  # it 'can find a single object with any attribute' do
+  #   tay = Merchant.create!(name: "tay", updated_at: "2019-08-13T00:00:000Z")
+  #
+  #   get "/api/v1/merchants/find?updated_at=2019-08-13T00:00:000Z"
+  #
+  #   merchant = JSON.parse(response.body)
+  #
+  #   expect(response).to be_successful
+  #   expect(tay["updated_at"]).to eq(merchant["data"]["attributes"]["updated_at"])
+  # end
+  #
+  # it 'can find a single object with any attribute' do
+  #   aurie = Merchant.create!(name: "aurie", created_at: "2019-08-13 00:00:00.000000000")
+  #
+  #   get "/api/v1/merchants/find?created_at=2019-08-13 00:00:00.000000000"
+  #
+  #   merchant = JSON.parse(response.body)
+  #
+  #   expect(response).to be_successful
+  #   expect(aurie["created_at"]).to eq(merchant["data"]["attributes"]["created_at"])
+  # end
 
   it 'can find most revenue' do
     tay = Merchant.create!(name: "tay")
@@ -99,6 +99,37 @@ describe 'Merchants API' do
     avi = Merchant.create!(name: "avi")
 
     get "/api/v1/merchants/revenue?date=2012-03-16"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+  end
+  it 'can find total revenue for specific merchant' do
+    tay = Merchant.create!(name: "tay")
+
+    get "/api/v1/merchants/#{tay.id}"
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_successful
+  end
+
+  it 'can find total revenue for specific merchant by date' do
+    tay = Merchant.create!(name: "tay")
+    stella = Merchant.create!(name: "stella")
+    avi = Merchant.create!(name: "avi")
+
+    get "/api/v1/merchants/#{tay.id}/revenue?date=2012-03-16"
+
+    merchant = JSON.parse(response.body)
+  
+    expect(response).to be_successful
+  end
+
+  it "can find specific merchant's fav customer by most items sold" do
+    tay = Merchant.create!(name: "tay")
+
+    get "/api/v1/merchants/#{tay.id}/favorite_customer"
 
     merchant = JSON.parse(response.body)
 

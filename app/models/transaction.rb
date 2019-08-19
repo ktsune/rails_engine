@@ -1,6 +1,7 @@
 class Transaction < ApplicationRecord
   belongs_to :invoice
 
-  validates_presence_of :credit_card_number,
-                        :result
+  def self.order_with_id
+    self.order("id asc")
+  end
 end
